@@ -1,0 +1,119 @@
+#pricing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+
+  .row {
+    width: 100vw;
+  }
+}
+
+form {
+  .row-cont {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 20px 0;
+    border-bottom: 1px solid #484343;
+
+    .check-box-cont {
+      position: relative;
+      display: inline-block;
+
+      input[type="checkbox"] {
+        visibility: hidden;
+      }
+
+      input[type="checkbox"]:checked + label:after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background-color: #fc0d1b;
+        opacity: 1;
+        transform: translateX(-50%) translateY(-50%);
+      }
+
+      .checkbox {
+        width: 38px;
+        height: 38px;
+        margin-right: 22px;
+        position: relative;
+        margin-top: 5px;
+        border-radius: 50%;
+        padding: 5px;
+        display: inline-block;
+      }
+
+      label {
+        background-color: transparent;
+        cursor: pointer;
+        border-radius: 50%;
+        height: 38px;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 38px;
+        border: 2px solid #fff;
+      }
+    }
+
+    .title-cont {
+      display: inline-block;
+      width: calc(100% - 125px);
+      .title {
+        font-size: em(27);
+        font-weight: bold;
+      }
+      .description {
+        color: #909090;
+        font-size: em(18);
+        line-height: 28px;
+        padding-right: 20px;
+      }
+    }
+
+    .price {
+      align-self: center;
+      color: blue;
+      font-size: em(26);
+      font-weight: bold;
+      transition: opacity 230ms ease-in;
+      opacity: 0;
+      &.show {
+        opacity: 1;
+      }
+    }
+  }
+
+  #total {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-left: 0px;
+    font-size: em(12);
+    line-height: 23px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: #B4C0CB;
+    @include breakpoint(large) {
+      padding-left: 60px;
+    }
+   #totalPrice {
+     letter-spacing: 1px;
+     color: blue;
+     font-size: em(26);
+     font-weight: bold;
+     transition: opacity 230ms ease-in;
+     opacity: 0;
+     &.show {
+       opacity: 1;
+     }
+   }
+  }
+}

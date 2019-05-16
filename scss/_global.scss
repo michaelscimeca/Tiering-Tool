@@ -1,0 +1,34 @@
+// Colors
+
+
+/************************************
+* Hover Mixin
+************************************/
+@mixin hover {
+  .no-touchevents & {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+#app {
+}
+
+body {
+  font-size: em(12);
+  background-color: #000;
+  color: #fff;
+}
+
+h1 {
+  text-transform: uppercase;
+  color: #fff;
+  @include youngSerif;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
+}
