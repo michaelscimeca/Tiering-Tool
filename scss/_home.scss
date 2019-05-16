@@ -80,7 +80,7 @@ form {
 
     .price {
       align-self: center;
-      color: blue;
+      color: #fff;
       font-size: em(26);
       font-weight: bold;
       transition: opacity 230ms ease-in;
@@ -96,9 +96,9 @@ form {
     justify-content: space-between;
     margin-top: 40px;
     padding-left: 0px;
-    font-size: em(12);
+    font-size: em(15);
     line-height: 23px;
-    letter-spacing: 6px;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #B4C0CB;
     @include breakpoint(large) {
@@ -106,7 +106,7 @@ form {
     }
    #totalPrice {
      letter-spacing: 1px;
-     color: blue;
+     color: #fff;
      font-size: em(26);
      font-weight: bold;
      transition: opacity 230ms ease-in;

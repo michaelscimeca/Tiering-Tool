@@ -25,9 +25,14 @@ h1 {
   text-transform: uppercase;
   color: #fff;
   @include youngSerif;
+  font-size: em(48);
+  @include breakpoint(medium) {
+    font-size: em(62);
+  }
 }
 
 ul {
+  margin: 0;
   li {
     list-style: none;
   }
