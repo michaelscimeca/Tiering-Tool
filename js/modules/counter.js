@@ -1,10 +1,10 @@
 'use strict';
 module.exports = function () {
   const list = document.querySelectorAll('form input');
+  const showTotalScore = document.querySelector('#totalScore span');
+  let Range = document.querySelector('#range span');
   let form = {};
   let total = 0;
-  let showTotalScore = document.getElementById('totalScore');
-  let Range = document.getElementById('range');
 
   function addValues () {
     total = 0;
@@ -14,18 +14,18 @@ module.exports = function () {
       }
     }
     if (total !== 0) {
-      showTotalScore.innerHTML = 'Score ' + total;
+      showTotalScore.innerHTML = total;
     } else {
-      showTotalScore.innerHTML = 'Score ';
+      showTotalScore.innerHTML = '';
     }
     if (total === 0) {
-      Range.innerHTML = 'Range ' + '';
+      Range.innerHTML = '';
     } else if (total > 0 && total <= 5) {
-      Range.innerHTML = 'Range ' + 'Low';
+      Range.innerHTML = 'Low';
     } else if (total >= 6 && total <= 9) {
-      Range.innerHTML = 'Range ' + 'Medium';
+      Range.innerHTML = 'Medium';
     } else {
-      Range.innerHTML = 'Range ' + 'High';
+      Range.innerHTML = 'High';
     }
   }
 

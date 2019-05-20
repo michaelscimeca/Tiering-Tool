@@ -21,7 +21,15 @@ body {
   color: #fff;
 }
 
-h1,
+h1 {
+  color: #fff;
+  @include youngSerif;
+  font-size: em(48);
+  @include breakpoint(medium) {
+    font-size: em(62);
+  }
+}
+
 h2 {
   color: #fff;
   @include youngSerif;
