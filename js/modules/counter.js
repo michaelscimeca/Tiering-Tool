@@ -2,7 +2,7 @@
 module.exports = function () {
   const list = document.querySelectorAll('form input');
   const showTotalScore = document.querySelector('#totalScore span');
-  let Range = document.querySelector('#range span');
+  const Range = document.querySelector('#range span');
   let form = {};
   let total = 0;
 
@@ -37,7 +37,6 @@ module.exports = function () {
     }
     addValues();
   }
-  console.log(list);
   for (let i = 0; i < list.length; i++) {
     form[list[i].name] = 0;
     list[i].addEventListener('click', onClick);

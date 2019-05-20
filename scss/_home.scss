@@ -1,14 +1,23 @@
 .line {
   position: relative;
   margin-top: 30px;
+  line-height: 42px;
   &:after {
     content: '';
     position: absolute;
-    bottom: 0px;
+    bottom: -10px;
     left: 0;
     background-color: #fc0d1b;
     height: 3px;
     width: 70px;
+
+    @include breakpoint(medium) {
+      bottom: -5px;
+    }
+
+    @include breakpoint(large) {
+      bottom: -10px;
+    }
   }
 }
 
@@ -27,11 +36,15 @@ form {
     border-bottom: 1px solid #484343;
   }
   .row-cont {
-    padding-top: 20px;
-    padding-bottom: 20px;
     position: relative;
     display: flex;
     flex-direction: row;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    @include breakpoint(medium) {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
 
     .check-box-cont {
       position: relative;
@@ -127,6 +140,7 @@ form {
     font-weight: bold;
     opacity: 1;
     text-align: right;
+    margin-bottom: 30px;
     span {
       color: #fc0d1b;
     }

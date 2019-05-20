@@ -24,8 +24,11 @@ body {
 h1 {
   color: #fff;
   @include youngSerif;
-  font-size: em(48);
+  font-size: em(52);
   @include breakpoint(medium) {
+    font-size: em(58);
+  }
+  @include breakpoint(large) {
     font-size: em(62);
   }
 }
@@ -33,7 +36,7 @@ h1 {
 h2 {
   color: #fff;
   @include youngSerif;
-  font-size: em(48);
+  font-size: em(43);
   @include breakpoint(medium) {
     font-size: em(44);
   }
