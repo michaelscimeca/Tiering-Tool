@@ -21,13 +21,13 @@ body {
   color: #fff;
 }
 
-h1 {
-  text-transform: uppercase;
+h1,
+h2 {
   color: #fff;
   @include youngSerif;
   font-size: em(48);
   @include breakpoint(medium) {
-    font-size: em(62);
+    font-size: em(44);
   }
 }
 
@@ -36,4 +36,8 @@ ul {
   li {
     list-style: none;
   }
+}
+
+hr {
+  border-bottom: 1px solid #484343;
 }

@@ -1,22 +1,31 @@
 #pricing {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
   height: 100vh;
   width: 100vw;
 
   .row {
     width: 100vw;
   }
+
+  .cont {
+    // border-bottom: 1px solid #484343;
+    padding: 20px 0;
+    p {
+      margin: 0;
+      color: gray;
+    }
+  }
 }
 
 form {
+  .border {
+    border-bottom: 1px solid #484343;
+  }
   .row-cont {
+    padding-top: 20px;
+    padding-bottom: 20px;
     position: relative;
     display: flex;
     flex-direction: row;
-    padding: 20px 0;
-    border-bottom: 1px solid #484343;
 
     .check-box-cont {
       position: relative;
@@ -72,9 +81,10 @@ form {
       }
       .description {
         color: #909090;
-        font-size: em(18);
-        line-height: 28px;
-        padding-right: 20px;
+        font-size: em(22);
+        line-height: 22px;
+        // padding-right: 20px;
+        padding-bottom: 10px;
       }
     }
 
@@ -91,29 +101,21 @@ form {
     }
   }
 
-  #total {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 40px;
-    padding-left: 0px;
-    font-size: em(15);
-    line-height: 23px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #B4C0CB;
-    @include breakpoint(large) {
-      padding-left: 60px;
-    }
-   #totalPrice {
-     letter-spacing: 1px;
-     color: #fff;
-     font-size: em(26);
-     font-weight: bold;
-     transition: opacity 230ms ease-in;
-     opacity: 0;
-     &.show {
-       opacity: 1;
-     }
-   }
+  #totalScore {
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: em(26);
+    font-weight: bold;
+    opacity: 1;
+    text-align: right;
+  }
+
+  #range {
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: em(26);
+    font-weight: bold;
+    opacity: 1;
+    text-align: right;
   }
 }
