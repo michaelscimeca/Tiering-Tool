@@ -21,10 +21,10 @@ body {
   color: #fff;
 }
 
-h1 {
+h2 {
   color: #fff;
   @include youngSerif;
-  font-size: em(52);
+  font-size: em(60);
   @include breakpoint(medium) {
     font-size: em(58);
   }
@@ -33,10 +33,11 @@ h1 {
   }
 }
 
-h2 {
+h3 {
   color: #fff;
   @include youngSerif;
   font-size: em(43);
+  line-height: 35px;
   @include breakpoint(medium) {
     font-size: em(44);
   }
