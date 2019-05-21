@@ -9,7 +9,7 @@ h2.line {
     position: absolute;
     bottom: -15px;
     left: 0;
-    background-color: #fc0d1b;
+    background-color: $red;
     height: 3px;
     width: 70px;
 
@@ -68,7 +68,7 @@ form {
         width: 25px;
         height: 25px;
         border-radius: 50%;
-        background-color: #fc0d1b;
+        background-color: $red;
         opacity: 1;
         transform: translateX(-50%) translateY(-50%);
       }
@@ -134,7 +134,7 @@ form {
     text-align: right;
     margin-top: 20px;
     span {
-      color: #fc0d1b;
+      color: $red;
     }
   }
 
@@ -147,13 +147,13 @@ form {
     text-align: right;
     margin-bottom: 30px;
     span {
-      color: #fc0d1b;
+      color: $red;
     }
   }
   #complexity-totalScore {
     margin-top: 20px;
   }
-  
+
   #complexity-range,
   #complexity-totalScore,
   #tier,
@@ -165,7 +165,7 @@ form {
     opacity: 1;
     text-align: right;
     span {
-      color: #fc0d1b;
+      color: $red;
     }
   }
   #total {
@@ -174,9 +174,9 @@ form {
     right: 20px;
   }
   #tier {
-    position: fixed;
-    top: 60px;
-    right: 20px;
+    // position: fixed;
+    // top: 60px;
+    // right: 20px;
   }
   #tier {
     margin-bottom: 30px;

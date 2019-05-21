@@ -103,7 +103,6 @@ module.exports = function () {
     } else {
       complexityListForm[e.target.name] = 0;
     }
-
     complexityAddValues();
   }
   for (let i = 0; i < complexityList.length; i++) {
