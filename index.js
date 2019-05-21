@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     description: 'Strategic and Complexity Criteria',
     url: `${(req.get('x-forwarded-port') === '443' || req.get('x-forwarded-port') === 443) ? 'https' : 'http'}://${req.get('host')}${req.originalUrl}`,
     'og_img': '#',
-    'site_name': 'Hello Starter',
+    'site_name': 'Tiering Tool',
     'author': 'Red Square'
   });
 });
@@ -38,7 +38,7 @@ app.use(function (err, req, res, next) {
 
   res.render('four-oh-four', {
     title: 'Not found',
-    description: 'Description',
+    description: 'Tiering Tool',
     url: `${(req.get('x-forwarded-port') === '443' || req.get('x-forwarded-port') === 443) ? 'https' : 'http'}://${req.get('host')}${req.originalUrl}`,
     'og_img': '#',
     'site_name': 'Hello Starter',
