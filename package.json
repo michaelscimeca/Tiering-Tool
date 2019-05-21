@@ -4,7 +4,7 @@
   "description": "Static site",
   "main": "index.js",
   "engines": {
-    "node": "10.11.0"
+    "node": "10.14.2"
   },
   "scripts": {
     "gulp": "ALLOW_CONFIG_MUTATIONS=Y gulp",
