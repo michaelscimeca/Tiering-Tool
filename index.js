@@ -16,8 +16,8 @@ app.use(function (req, res, next) {
 
 app.get('/', (req, res) => {
   res.render('home', {
-    title: 'Hello...',
-    description: 'Description',
+    title: 'Tiering Tool',
+    description: 'Strategic and Complexity Criteria',
     url: `${(req.get('x-forwarded-port') === '443' || req.get('x-forwarded-port') === 443) ? 'https' : 'http'}://${req.get('host')}${req.originalUrl}`,
     'og_img': '#',
     'site_name': 'Hello Starter',
