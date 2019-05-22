@@ -16,11 +16,11 @@ app.use(function (req, res, next) {
 
 app.get('/', (req, res) => {
   res.render('home', {
-    title: 'Tiering Tool',
-    description: 'Strategic and Complexity Criteria',
+    title: 'Digital Tiering Tool',
+    description: 'Internal tool for Red Square.',
     url: `${(req.get('x-forwarded-port') === '443' || req.get('x-forwarded-port') === 443) ? 'https' : 'http'}://${req.get('host')}${req.originalUrl}`,
     'og_img': '#',
-    'site_name': 'Tiering Tool',
+    'site_name': 'Digital Tiering Tool',
     'author': 'Red Square'
   });
 });
@@ -38,10 +38,10 @@ app.use(function (err, req, res, next) {
 
   res.render('four-oh-four', {
     title: 'Not found',
-    description: 'Tiering Tool',
+    description: 'Digital Tiering Tool',
     url: `${(req.get('x-forwarded-port') === '443' || req.get('x-forwarded-port') === 443) ? 'https' : 'http'}://${req.get('host')}${req.originalUrl}`,
     'og_img': '#',
-    'site_name': 'Tiering Tool',
+    'site_name': 'Digital Tiering Tool',
     'author': 'Red Square'
   });
 });
