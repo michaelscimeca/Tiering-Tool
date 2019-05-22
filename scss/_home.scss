@@ -174,12 +174,52 @@ form {
     right: 20px;
   }
   #tier {
-    // position: fixed;
-    // top: 60px;
-    // right: 20px;
-  }
-  #tier {
     margin-bottom: 30px;
   }
+}
 
+#overall {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  float: right;
+  padding: 20px;
+  background: #151515;
+  #overal-input {
+    text-align: right;
+    margin-bottom: 20px;
+  }
+  input {
+    text-align: left;
+    height: 40px;
+    color: #fff;
+    background-color: transparent;
+    border: 0;
+    border-bottom: 1px solid $red;
+    min-width: 300px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: 1.625em;
+    font-weight: 700;
+    padding-bottom: 0px;
+  }
+
+  input:focus {
+    outline: none;
+  }
+  #overall-strategic-score,
+  #overall-Complexity-score,
+  #overall-strategic-range,
+  #overall-Complexity-score,
+  #overall-Complexity-range,
+  #overall-tier {
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: em(26);
+    font-weight: bold;
+    opacity: 1;
+    text-align: right;
+    span {
+      color: $red;
+    }
+  }
 }
