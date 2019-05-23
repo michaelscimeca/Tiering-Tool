@@ -56,21 +56,22 @@ form {
         visibility: hidden;
       }
 
-      input[type="radio"] + label:after {
-        transition: all 300ms ease-in;
-      }
-
       input[type="radio"]:checked + label:after {
         content: "";
         position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 25px;
-        height: 25px;
-        border-radius: 50%;
-        background-color: $red;
-        opacity: 1;
+        top: 23%;
+        left: 39%;
         transform: translateX(-50%) translateY(-50%);
+        display: block;
+        width: 8px;
+        height: 15px;
+        border: solid red;
+        border-width: 0 3px 3px 0;
+        transform: rotate(45deg);
+      }
+
+      input[type="radio"]:checked + label {
+        border: 2px solid $red;
       }
 
       .checkbox {
@@ -94,6 +95,7 @@ form {
         top: 0;
         width: 38px;
         border: 2px solid #fff;
+        // transition: all 200ms ease-in;
       }
     }
 
@@ -125,101 +127,74 @@ form {
     }
   }
 
-  #strategic-totalScore {
-    letter-spacing: 1px;
-    color: #fff;
-    font-size: em(26);
-    font-weight: bold;
-    opacity: 1;
-    text-align: right;
-    margin-top: 20px;
-    span {
-      color: $red;
-    }
-  }
-
-  #strategic-range {
-    letter-spacing: 1px;
-    color: #fff;
-    font-size: em(26);
-    font-weight: bold;
-    opacity: 1;
-    text-align: right;
-    margin-bottom: 30px;
-    span {
-      color: $red;
-    }
-  }
-  #complexity-totalScore {
-    margin-top: 20px;
-  }
-
-  #complexity-range,
   #complexity-totalScore,
-  #tier,
-  #total {
-    letter-spacing: 1px;
-    color: #fff;
+  #strategic-totalScore {
+    margin-top: 20px;
+  }
+}
+
+#strategic-totalScore,
+#strategic-range,
+#complexity-range,
+#complexity-totalScore,
+#tier,
+#total,
+#overall-strategic-score,
+#overall-Complexity-score,
+#overall-strategic-range,
+#overall-Complexity-score,
+#overall-Complexity-range,
+#overall-tier {
+  letter-spacing: 1px;
+  color: #fff;
+  font-size: em(22);
+  font-weight: bold;
+  opacity: 1;
+  text-align: right;
+  @include breakpoint(medium) {
     font-size: em(26);
-    font-weight: bold;
-    opacity: 1;
-    text-align: right;
-    span {
-      color: $red;
-    }
   }
-  #total {
-    position: fixed;
-    top: 31px;
-    right: 20px;
-  }
-  #tier {
-    margin-bottom: 30px;
+  span {
+    color: $red;
   }
 }
 
 #overall {
   margin-top: 40px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
   float: right;
   padding: 20px;
   background: #151515;
+  position: relative;
+  width: 100%;
+  @include breakpoint(medium) {
+    width: auto;
+  }
   #overal-input {
     text-align: right;
     margin-bottom: 20px;
   }
   input {
-    text-align: left;
+    position: relative;
     height: 40px;
-    color: #fff;
+    min-width: 100%;
+    text-align: left;
     background-color: transparent;
     border: 0;
-    border-bottom: 1px solid $red;
-    min-width: 300px;
-    letter-spacing: 1px;
+    border-bottom: 1px solid #484343;
+    border-radius: 0px;
+    font-size: em(26);
     color: #fff;
-    font-size: 1.625em;
     font-weight: 700;
+    letter-spacing: 1px;
     padding-bottom: 0px;
+    padding-left: 0;
+    @include breakpoint(medium) {
+      min-width: 300px;
+    }
   }
 
   input:focus {
     outline: none;
-  }
-  #overall-strategic-score,
-  #overall-Complexity-score,
-  #overall-strategic-range,
-  #overall-Complexity-score,
-  #overall-Complexity-range,
-  #overall-tier {
-    letter-spacing: 1px;
-    color: #fff;
-    font-size: em(26);
-    font-weight: bold;
-    opacity: 1;
-    text-align: right;
-    span {
-      color: $red;
-    }
   }
 }
