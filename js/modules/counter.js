@@ -18,43 +18,46 @@ module.exports = function () {
   let complexityListForm = {};
   let complexityTotal = 0;
 
-  function strategicAddValues () {
-    strategicTotal = 0;
-    for (let val in strategicListForm) {
-      if (strategicListForm.hasOwnProperty(val)) {
-        strategicTotal += strategicListForm[val];
+  function values (form, total, scoreElm, range, overalRange, overalTotal, overalElm) {
+    total = 0;
+    for (let val in form) {
+      if (form.hasOwnProperty(val)) {
+        total += form[val];
       }
     }
-    if (strategicTotal !== 0) {
-      strategicScore.innerHTML = strategicTotal;
+    if (total !== 0) {
+      scoreElm.innerHTML = total;
     } else {
-      strategicScore.innerHTML = '';
+      scoreElm.innerHTML = '';
     }
-    if (strategicTotal === 0) {
-      strategicRange.innerHTML = '';
-      overallRangeScore.innerHTML = '';
-    } else if (strategicTotal > 0 && strategicTotal <= 5) {
-      strategicRange.innerHTML = 'Low';
-      overallRangeScore.innerHTML = 'Low';
-    } else if (strategicTotal >= 6 && strategicTotal <= 9) {
-      strategicRange.innerHTML = 'Medium';
-      overallRangeScore.innerHTML = 'Medium';
+    if (total === 0) {
+      range.innerHTML = '';
+      overalRange.innerHTML = '';
+    } else if (total > 0 && total <= 5) {
+      range.innerHTML = 'Low';
+      overalRange.innerHTML = 'Low';
+    } else if (total >= 6 && total <= 9) {
+      range.innerHTML = 'Medium';
+      overalRange.innerHTML = 'Medium';
     } else {
-      strategicRange.innerHTML = 'High';
-      overallRangeScore.innerHTML = 'high';
+      range.innerHTML = 'High';
+      overalRange.innerHTML = 'high';
     }
+    tierSet(total, overalTotal);
 
-    if ((strategicTotal + complexityTotal) > 19) {
+    overalElm.innerHTML = total;
+  }
+
+  function tierSet (total, overalTotal) {
+    if ((total + overalTotal) > 19) {
       tier.innerHTML = 1;
-    } else if ((strategicTotal + complexityTotal) > 15) {
+    } else if ((total + overalTotal) > 15) {
       tier.innerHTML = 2;
-    } else if ((strategicTotal + complexityTotal) > 8) {
+    } else if ((total + overalTotal) > 8) {
       tier.innerHTML = 3;
-    } else if ((strategicTotal + complexityTotal) > 0) {
+    } else if ((total + overalTotal) > 0) {
       tier.innerHTML = 4;
     }
-    // totalAmount = strategicTotal + complexityTotal;
-    overallStrategicScore.innerHTML = strategicTotal;
   }
 
   function onClick (e) {
@@ -63,58 +66,20 @@ module.exports = function () {
     } else {
       strategicListForm[e.target.name] = 0;
     }
-    strategicAddValues();
+    values(strategicListForm, strategicTotal, strategicScore, strategicRange, overallRangeScore, complexityTotal, overallStrategicScore);
   }
   for (let i = 0; i < strategicList.length; i++) {
     strategicListForm[strategicList[i].name] = 0;
     strategicList[i].addEventListener('click', onClick);
   }
 
-  function complexityAddValues () {
-    complexityTotal = 0;
-    for (let val in complexityListForm) {
-      if (complexityListForm.hasOwnProperty(val)) {
-        complexityTotal += complexityListForm[val];
-      }
-    }
-    if (complexityTotal !== 0) {
-      complexityScore.innerHTML = complexityTotal;
-      overallComplexityScore.innerHTML = complexityTotal;
-    } else {
-      complexityScore.innerHTML = '';
-      overallComplexityScore.innerHTML = '';
-    }
-    if (complexityTotal === 0) {
-      complexityRange.innerHTML = '';
-      overallComplexityRange.innerHTML = '';
-    } else if (complexityTotal > 0 && complexityTotal <= 5) {
-      complexityRange.innerHTML = 'Low';
-      overallComplexityRange.innerHTML = 'Low';
-    } else if (complexityTotal >= 6 && complexityTotal <= 9) {
-      complexityRange.innerHTML = 'Medium';
-      overallComplexityRange.innerHTML = 'Medium';
-    } else {
-      complexityRange.innerHTML = 'High';
-      overallComplexityRange.innerHTML = 'High';
-    }
-
-    if ((strategicTotal + complexityTotal) > 19) {
-      tier.innerHTML = 1;
-    } else if ((strategicTotal + complexityTotal) > 15) {
-      tier.innerHTML = 2;
-    } else if ((strategicTotal + complexityTotal) > 8) {
-      tier.innerHTML = 3;
-    } else if ((strategicTotal + complexityTotal) > 0) {
-      tier.innerHTML = 4;
-    }
-  }
   function onClickComplexity (e) {
     if (e.target.checked) {
       complexityListForm[e.target.name] = parseInt(e.target.value);
     } else {
       complexityListForm[e.target.name] = 0;
     }
-    complexityAddValues();
+    values(complexityListForm, complexityTotal, complexityScore, complexityRange, overallComplexityRange, complexityTotal, overallComplexityScore);
   }
   for (let i = 0; i < complexityList.length; i++) {
     complexityListForm[complexityList[i].name] = 0;
