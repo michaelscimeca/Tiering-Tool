@@ -17,7 +17,6 @@ module.exports = function () {
   const tier = document.querySelector('#overall-tier span');
   let complexityListForm = {};
   let complexityTotal = 0;
-  // let totalAmount = 0;
 
   function strategicAddValues () {
     strategicTotal = 0;
@@ -57,6 +56,7 @@ module.exports = function () {
     // totalAmount = strategicTotal + complexityTotal;
     overallStrategicScore.innerHTML = strategicTotal;
   }
+
   function onClick (e) {
     if (e.target.checked) {
       strategicListForm[e.target.name] = parseInt(e.target.value);
@@ -107,7 +107,6 @@ module.exports = function () {
     } else if ((strategicTotal + complexityTotal) > 0) {
       tier.innerHTML = 4;
     }
-    // totalAmount = strategicTotal + complexityTotal;
   }
   function onClickComplexity (e) {
     if (e.target.checked) {
