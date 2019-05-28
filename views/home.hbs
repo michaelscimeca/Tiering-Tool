@@ -138,7 +138,7 @@
             <div class="row-cont">
               <div class="check-box-cont">
                 <div class="checkbox">
-                  <input type="radio" value="3" name="markget-reach" id="7">
+                  <input type="radio" value="3" name="market-reach" id="7">
                   <label for="7"></label>
                 </div>
               </div>
@@ -152,7 +152,7 @@
             <div class="row-cont">
               <div class="check-box-cont">
                 <div class="checkbox">
-                  <input type="radio" value="2" name="markget-reach" id="8">
+                  <input type="radio" value="2" name="market-reach" id="8">
                   <label for="8"></label>
                 </div>
               </div>
@@ -166,7 +166,7 @@
             <div class="row-cont">
               <div class="check-box-cont">
                 <div class="checkbox">
-                  <input type="radio" value="1" name="markget-reach" id="9">
+                  <input type="radio" value="1" name="market-reach" id="9">
                   <label for="9"></label>
                 </div>
               </div>
@@ -237,8 +237,8 @@
     </ul>
     <div class="row">
       <div class="large-12 column">
-        <div id="strategic-totalScore">Strategic Importance Score = <span>0</span></div>
-        <div id="strategic-range">Strategic Importance Range = <span>Low</span></div>
+        <div id="strategic-totalScore">Strategic Importance Score = <span class="score">0</span></div>
+        <div id="strategic-range">Strategic Importance Range = <span class="level">Low</span></div>
       </div>
     </div>
   </div>
@@ -480,8 +480,8 @@
     </ul>
     <div class="row">
       <div class="large-12 column">
-        <div id="complexity-totalScore">Complexity Score = <span>0</span></div>
-        <div id="complexity-range">Complexity Range = <span>Low</span></div>
+        <div id="complexity-totalScore">Complexity Score = <span class="score">0</span></div>
+        <div id="complexity-range">Complexity Range = <span class="level">Low</span></div>
         <!-- <div id="total">Total = <span>0</span></div> -->
       </div>
     </div>
@@ -494,10 +494,22 @@
       <div id="overal-input">
         <input type="text" placeholder="Project Name">
       </div>
-      <div id="overall-strategic-score">Strategic Score = <span>0</span></div>
-      <div id="overall-strategic-range">Strategic Range = <span>Low</span></div>
-      <div id="overall-Complexity-score">Complexity Score = <span>0</span></div>
-      <div id="overall-Complexity-range">Complexity Range = <span>Low</span></div>
+      <h2 class="line">Criteria Strategic Importance</h2>
+      <h3>Branding/Category - <span data-name="branding"></span></h3>
+      <h3>Budget - <span data-name="budget"></span></h3>
+      <h3>Market Reach - <span data-name="market-reach"></span></h3>
+      <h3>Brand Perception Impact - <span data-name="brand-plan"></span></h3>
+      <div id="overall-strategic-score">Strategic Score = <span data-id="strategic" class="score">0</span></div>
+      <div id="overall-strategic-range">Strategic Range = <span data-id="strategic" class="level">Low</span></div>
+
+      <h2 class="line">Criteria Complexity</h2>
+      <h3>Production Complexity - <span data-name="production-complexity"></span></h3>
+      <h3>Content Complexity - <span data-name="content-complexity"></span></h3>
+      <h3>Creative Complexity - <span data-name="creative-complexity"></span></h3>
+      <h3>Type of Stakeholders - <span data-name="stakeholders"></span></h3>
+      <div id="overall-Complexity-score">Complexity Score = <span data-id="complexity" class="score">0</span></div>
+      <div id="overall-Complexity-range">Complexity Range = <span data-id="complexity" class="level">Low</span></div>
+      <br/>
       <div id="overall-tier">Actual Tier = <span>0</span></div>
     </div>
   </div>

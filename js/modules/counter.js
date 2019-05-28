@@ -1,30 +1,31 @@
 'use strict';
-module.exports = function () {
-  const strategicList = document.querySelectorAll('#strategic input');
-  const strategicScore = document.querySelector('#strategic-totalScore span');
-  const strategicRange = document.querySelector('#strategic-range span');
-  let strategicListForm = {};
-  let strategicTotal = 0;
-  const complexityList = document.querySelectorAll('#complexity input');
-  const complexityScore = document.querySelector('#complexity-totalScore span');
-  const complexityRange = document.querySelector('#complexity-range span');
+module.exports = function (sections, totals) {
+  const tier = document.querySelector(`${totals} #overall-tier span`);
+  let sectionEls = [];
 
-  const overallStrategicScore = document.querySelector('#overall-strategic-score span');
-  const overallRangeScore = document.querySelector('#overall-strategic-range span');
-  const overallComplexityScore = document.querySelector('#overall-Complexity-score span');
-  const overallComplexityRange = document.querySelector('#overall-Complexity-range span');
+  for (let i = 0; i < sections.length; i++) {
+    sectionEls[i] = {
+      'inputs': document.querySelectorAll(`${sections[i]} input`),
+      'scoreEl': document.querySelector(`${sections[i]} .score`),
+      'levelEl': document.querySelector(`${sections[i]} .level`),
+      'summaryScoreEl': document.querySelector(`.score[data-id=${sections[i].slice(1)}]`),
+      'summarylevelEl': document.querySelector(`.level[data-id=${sections[i].slice(1)}]`),
+      'selectedValues': {},
+      'total': 0
+    };
+  }
 
-  const tier = document.querySelector('#overall-tier span');
-  let complexityListForm = {};
-  let complexityTotal = 0;
-
-  function values (form, total, scoreElm, scoreRange, overallScore, overallScoreElm) {
-    total = 0;
-    for (let val in form) {
-      if (form.hasOwnProperty(val)) {
-        total += form[val];
-      }
+  for (let i = 0; i < sectionEls.length; i++) {
+    for (let j = 0; j < sectionEls[i].inputs.length; j++) {
+      sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
+      sectionEls[i].inputs[j].setAttribute('data-i', i);
+      // strategicListForm[strategicList[i].name] = 0;
+      sectionEls[i].inputs[j].addEventListener('click', onClick);
+      // strategicList[i].addEventListener('click', onClickStrategic);
     }
+  }
+
+  function updateScores (total, scoreElm, scoreRange, summaryScore, summaryLevel) {
     if (total !== 0) {
       scoreElm.innerHTML = total;
     } else {
@@ -32,94 +33,77 @@ module.exports = function () {
     }
     if (total === 0) {
       scoreRange.innerHTML = '';
-      overallScore.innerHTML = '';
+      summaryScore.innerHTML = '';
     } else if (total > 0 && total <= 5) {
       scoreRange.innerHTML = 'Low';
-      overallScore.innerHTML = 'Low';
+      summaryScore.innerHTML = 'Low';
     } else if (total >= 6 && total <= 9) {
       scoreRange.innerHTML = 'Medium';
-      overallScore.innerHTML = 'Medium';
+      summaryScore.innerHTML = 'Medium';
     } else {
       scoreRange.innerHTML = 'High';
-      overallScore.innerHTML = 'high';
+      summaryScore.innerHTML = 'High';
     }
-    setTier(total, complexityTotal);
-    overallScoreElm.innerHTML = strategicTotal;
+    summaryLevel.innerHTML = total;
   }
 
-  function setTier (total, complexityTotal) {
-    if ((total + complexityTotal) > 19) {
+  function updateSummary (name, val) {
+    val = parseInt(val);
+    let letter = '';
+    if (val === 0) {
+      letter = '';
+    } else if (val === 1) {
+      letter = 'L';
+    } else if (val === 2) {
+      letter = 'M';
+    } else if (val === 3) {
+      letter = 'H';
+    }
+    document.querySelector(`#overall [data-name=${name}]`).innerHTML = letter;
+  }
+
+  function updateTier () {
+    let total = 0;
+
+    for (let i = 0; i < sectionEls.length; i++) {
+      total += sectionEls[i].total;
+    }
+    if (total > 19) {
       tier.innerHTML = 1;
-    } else if ((total + complexityTotal) > 15) {
+    } else if (total > 15) {
       tier.innerHTML = 2;
-    } else if ((total + complexityTotal) > 8) {
+    } else if (total > 8) {
       tier.innerHTML = 3;
-    } else if ((total + complexityTotal) > 0) {
+    } else if (total > 0) {
       tier.innerHTML = 4;
     }
+  }
+
+  function getTotal (sectionForm) {
+    let total = 0;
+    for (let val in sectionForm) {
+      if (sectionForm.hasOwnProperty(val)) {
+        total += sectionForm[val];
+      }
+    }
+    return total;
   }
 
   function onClick (e) {
+    const index = e.target.getAttribute('data-i');
     if (e.target.checked) {
-      strategicListForm[e.target.name] = parseInt(e.target.value);
+      sectionEls[index].selectedValues[e.target.name] = parseInt(e.target.value);
+      updateSummary(e.target.name, e.target.value);
+      // strategicListForm[e.target.name] = parseInt(e.target.value);
     } else {
-      strategicListForm[e.target.name] = 0;
-    }
-    values(strategicListForm, strategicTotal, strategicScore, strategicRange, overallRangeScore, overallStrategicScore);
-  }
-  for (let i = 0; i < strategicList.length; i++) {
-    strategicListForm[strategicList[i].name] = 0;
-    strategicList[i].addEventListener('click', onClick);
-  }
-
-  function complexityAddValues (form) {
-    complexityTotal = 0;
-    for (let val in form) {
-      if (form.hasOwnProperty(val)) {
-        complexityTotal += form[val];
-      }
-    }
-    if (complexityTotal !== 0) {
-      complexityScore.innerHTML = complexityTotal;
-      overallComplexityScore.innerHTML = complexityTotal;
-    } else {
-      complexityScore.innerHTML = '';
-      overallComplexityScore.innerHTML = '';
-    }
-    if (complexityTotal === 0) {
-      complexityRange.innerHTML = '';
-      overallComplexityRange.innerHTML = '';
-    } else if (complexityTotal > 0 && complexityTotal <= 5) {
-      complexityRange.innerHTML = 'Low';
-      overallComplexityRange.innerHTML = 'Low';
-    } else if (complexityTotal >= 6 && complexityTotal <= 9) {
-      complexityRange.innerHTML = 'Medium';
-      overallComplexityRange.innerHTML = 'Medium';
-    } else {
-      complexityRange.innerHTML = 'High';
-      overallComplexityRange.innerHTML = 'High';
+      sectionEls[index].selectedValues[e.target.name] = 0;
+      // strategicListForm[e.target.name] = 0;
     }
 
-    if ((strategicTotal + complexityTotal) > 19) {
-      tier.innerHTML = 1;
-    } else if ((strategicTotal + complexityTotal) > 15) {
-      tier.innerHTML = 2;
-    } else if ((strategicTotal + complexityTotal) > 8) {
-      tier.innerHTML = 3;
-    } else if ((strategicTotal + complexityTotal) > 0) {
-      tier.innerHTML = 4;
-    }
-  }
-  function onClickComplexity (e) {
-    if (e.target.checked) {
-      complexityListForm[e.target.name] = parseInt(e.target.value);
-    } else {
-      complexityListForm[e.target.name] = 0;
-    }
-    values(complexityListForm, complexityTotal, complexityScore, complexityRange, overallComplexityRange, overallComplexityScore);
-  }
-  for (let i = 0; i < complexityList.length; i++) {
-    complexityListForm[complexityList[i].name] = 0;
-    complexityList[i].addEventListener('click', onClickComplexity);
+    sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
+    // strategicTotal = getTotal(strategicListForm);
+    updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
+    // updateScores(strategicTotal, strategicScore, strategicRange, overallRangeScore, overallStrategicScore);
+    updateTier();
   }
 };

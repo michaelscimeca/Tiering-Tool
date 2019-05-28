@@ -1,6 +1,8 @@
+const counter = require('./modules/counter');
 var Modules = {
   init: function () {
-    require('./modules/counter')();
+    // counter(array of ids of sections, id of where totals large)
+    counter(['#strategic','#complexity'], '#overall');
   }
 };
 
