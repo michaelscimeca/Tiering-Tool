@@ -18,7 +18,7 @@ module.exports = function () {
   let complexityListForm = {};
   let complexityTotal = 0;
 
-  function values (form, total, scoreElm, range, overalRange, overalTotal, overalElm) {
+  function values (form, total, scoreElm, scoreRange, overallScore, overallScoreElm) {
     total = 0;
     for (let val in form) {
       if (form.hasOwnProperty(val)) {
@@ -31,31 +31,30 @@ module.exports = function () {
       scoreElm.innerHTML = '';
     }
     if (total === 0) {
-      range.innerHTML = '';
-      overalRange.innerHTML = '';
+      scoreRange.innerHTML = '';
+      overallScore.innerHTML = '';
     } else if (total > 0 && total <= 5) {
-      range.innerHTML = 'Low';
-      overalRange.innerHTML = 'Low';
+      scoreRange.innerHTML = 'Low';
+      overallScore.innerHTML = 'Low';
     } else if (total >= 6 && total <= 9) {
-      range.innerHTML = 'Medium';
-      overalRange.innerHTML = 'Medium';
+      scoreRange.innerHTML = 'Medium';
+      overallScore.innerHTML = 'Medium';
     } else {
-      range.innerHTML = 'High';
-      overalRange.innerHTML = 'high';
+      scoreRange.innerHTML = 'High';
+      overallScore.innerHTML = 'high';
     }
-    tierSet(total, overalTotal);
-
-    overalElm.innerHTML = total;
+    setTier(total, complexityTotal);
+    overallScoreElm.innerHTML = strategicTotal;
   }
 
-  function tierSet (total, overalTotal) {
-    if ((total + overalTotal) > 19) {
+  function setTier (total, complexityTotal) {
+    if ((total + complexityTotal) > 19) {
       tier.innerHTML = 1;
-    } else if ((total + overalTotal) > 15) {
+    } else if ((total + complexityTotal) > 15) {
       tier.innerHTML = 2;
-    } else if ((total + overalTotal) > 8) {
+    } else if ((total + complexityTotal) > 8) {
       tier.innerHTML = 3;
-    } else if ((total + overalTotal) > 0) {
+    } else if ((total + complexityTotal) > 0) {
       tier.innerHTML = 4;
     }
   }
@@ -66,20 +65,58 @@ module.exports = function () {
     } else {
       strategicListForm[e.target.name] = 0;
     }
-    values(strategicListForm, strategicTotal, strategicScore, strategicRange, overallRangeScore, complexityTotal, overallStrategicScore);
+    values(strategicListForm, strategicTotal, strategicScore, strategicRange, overallRangeScore, overallStrategicScore);
   }
   for (let i = 0; i < strategicList.length; i++) {
     strategicListForm[strategicList[i].name] = 0;
     strategicList[i].addEventListener('click', onClick);
   }
 
+  function complexityAddValues (form) {
+    complexityTotal = 0;
+    for (let val in form) {
+      if (form.hasOwnProperty(val)) {
+        complexityTotal += form[val];
+      }
+    }
+    if (complexityTotal !== 0) {
+      complexityScore.innerHTML = complexityTotal;
+      overallComplexityScore.innerHTML = complexityTotal;
+    } else {
+      complexityScore.innerHTML = '';
+      overallComplexityScore.innerHTML = '';
+    }
+    if (complexityTotal === 0) {
+      complexityRange.innerHTML = '';
+      overallComplexityRange.innerHTML = '';
+    } else if (complexityTotal > 0 && complexityTotal <= 5) {
+      complexityRange.innerHTML = 'Low';
+      overallComplexityRange.innerHTML = 'Low';
+    } else if (complexityTotal >= 6 && complexityTotal <= 9) {
+      complexityRange.innerHTML = 'Medium';
+      overallComplexityRange.innerHTML = 'Medium';
+    } else {
+      complexityRange.innerHTML = 'High';
+      overallComplexityRange.innerHTML = 'High';
+    }
+
+    if ((strategicTotal + complexityTotal) > 19) {
+      tier.innerHTML = 1;
+    } else if ((strategicTotal + complexityTotal) > 15) {
+      tier.innerHTML = 2;
+    } else if ((strategicTotal + complexityTotal) > 8) {
+      tier.innerHTML = 3;
+    } else if ((strategicTotal + complexityTotal) > 0) {
+      tier.innerHTML = 4;
+    }
+  }
   function onClickComplexity (e) {
     if (e.target.checked) {
       complexityListForm[e.target.name] = parseInt(e.target.value);
     } else {
       complexityListForm[e.target.name] = 0;
     }
-    values(complexityListForm, complexityTotal, complexityScore, complexityRange, overallComplexityRange, complexityTotal, overallComplexityScore);
+    values(complexityListForm, complexityTotal, complexityScore, complexityRange, overallComplexityRange, overallComplexityScore);
   }
   for (let i = 0; i < complexityList.length; i++) {
     complexityListForm[complexityList[i].name] = 0;
