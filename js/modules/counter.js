@@ -34,29 +34,37 @@ module.exports = function (sections, totals) {
   }
 
   function updateScores (total, scoreElm, scoreLevelElm, summaryScoreElm, summaryLevel) {
+    // Check if total doesnt equal 0
     if (total !== 0) {
+      // Add total
       scoreElm.innerHTML = total;
-    } else {
-      scoreElm.innerHTML = '';
     }
+    // if total is zero show no progress
     if (total === 0) {
       scoreLevelElm.innerHTML = '';
       summaryScoreElm.innerHTML = '';
+      // if total is great then 0 but less then 5
     } else if (total > 0 && total <= 5) {
       scoreLevelElm.innerHTML = 'Low';
       summaryScoreElm.innerHTML = 'Low';
+      // if total is great then or equal to 6 but less then 9
     } else if (total >= 6 && total <= 9) {
       scoreLevelElm.innerHTML = 'Medium';
       summaryScoreElm.innerHTML = 'Medium';
+      // if total is great 9
     } else {
       scoreLevelElm.innerHTML = 'High';
       summaryScoreElm.innerHTML = 'High';
     }
+
+    // Show overall Total
     summaryLevel.innerHTML = total;
   }
 
   function updateSummary (name, val) {
+    // Grab value and parse it to a number
     val = parseInt(val);
+    // Based on number assign it to a letter
     let letter = '';
     if (val === 0) {
       letter = '';
@@ -67,12 +75,13 @@ module.exports = function (sections, totals) {
     } else if (val === 3) {
       letter = 'H';
     }
+    // Based on what was clicked add letter to asigned name.
     document.querySelector(`#overall [data-name=${name}]`).innerHTML = letter;
   }
 
   function updateTier () {
     let total = 0;
-
+    // Loops to both totals and adds them up.
     for (let i = 0; i < sectionEls.length; i++) {
       total += sectionEls[i].total;
     }
@@ -98,20 +107,21 @@ module.exports = function (sections, totals) {
   }
 
   function onClick (e) {
+    // Set grab index of which obect your in
     const index = e.target.getAttribute('data-i');
     if (e.target.checked) {
-      console.log(sectionEls[index]);
+      // Select object based on index and set key to a value
       sectionEls[index].selectedValues[e.target.name] = parseInt(e.target.value);
+      // Grab Name and Value
       updateSummary(e.target.name, e.target.value);
-      // strategicListForm[e.target.name] = parseInt(e.target.value);
     } else {
+      // select object based on index and set it to 0
       sectionEls[index].selectedValues[e.target.name] = 0;
-      // strategicListForm[e.target.name] = 0;
     }
+    // Set total based on which index your in to the object
     sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
-    // strategicTotal = getTotal(strategicListForm);
+    // Let innerHMTL based on score giving in the object.
     updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
-    // updateScores(strategicTotal, strategicScore, strategicRange, overallRangeScore, overallStrategicScore);
     updateTier();
   }
 };
