@@ -43,6 +43,16 @@ h3 {
   }
 }
 
+h4 {
+  color: #fff;
+  @include youngSerif;
+  font-size: em(43);
+  line-height: 35px;
+  @include breakpoint(medium) {
+    font-size: em(44);
+  }
+}
+
 ul {
   margin: 0;
   li {

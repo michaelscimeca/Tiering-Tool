@@ -133,6 +133,10 @@ form {
   }
 }
 
+#overall-strategic-range {
+  margin-bottom: 20px;
+}
+
 #strategic-totalScore,
 #strategic-range,
 #complexity-range,
@@ -163,7 +167,7 @@ form {
   margin-top: 40px;
   margin-bottom: 40px;
   // float: right;
-  padding: 20px;
+  padding: 20px 20px 30px 20px;
   background: #151515;
   position: relative;
   width: 100%;
@@ -174,6 +178,16 @@ form {
     // text-align: right;
     margin-bottom: 20px;
   }
+
+  text-align: left;
+  #overall-strategic-score,
+  #overall-strategic-range,
+  #overall-Complexity-score,
+  #overall-Complexity-range,
+  #overall-tier {
+    text-align: left;
+
+  }
   input {
     position: relative;
     height: 40px;
@@ -183,18 +197,53 @@ form {
     border: 0;
     border-bottom: 1px solid #484343;
     border-radius: 0px;
-    font-size: em(26);
+    font-size: em(34);
     color: #fff;
     font-weight: 700;
     letter-spacing: 1px;
     padding-bottom: 0px;
     padding-left: 0;
     @include breakpoint(medium) {
-      min-width: 300px;
+      // min-width: 300px;
     }
   }
 
   input:focus {
     outline: none;
+  }
+
+  h4 {
+    position: relative;
+    // margin-top: 30px;
+    // line-height: 42px;
+    margin-bottom: 20px;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      background-color: $red;
+      height: 2px;
+      width: 70px;
+
+      @include breakpoint(medium) {
+        bottom: -4px;
+      }
+    }
+  }
+
+  .category {
+    letter-spacing: 1px;
+    color: #fff;
+    font-size: em(22);
+    font-weight: bold;
+    opacity: 1;
+    text-align: left;
+    @include breakpoint(medium) {
+      font-size: em(26);
+    }
+    span {
+      color: $red;
+    }
   }
 }

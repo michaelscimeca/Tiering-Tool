@@ -2,47 +2,55 @@
 module.exports = function (sections, totals) {
   const tier = document.querySelector(`${totals} #overall-tier span`);
   let sectionEls = [];
-
+  // Create Objects for each form
   for (let i = 0; i < sections.length; i++) {
     sectionEls[i] = {
+      // Loop through and select all inputs in two array
       'inputs': document.querySelectorAll(`${sections[i]} input`),
+      // Loop through and grab scores
       'scoreEl': document.querySelector(`${sections[i]} .score`),
+      // Loop through and grab levels
       'levelEl': document.querySelector(`${sections[i]} .level`),
+      // Loop through and grab summary of the scores
       'summaryScoreEl': document.querySelector(`.score[data-id=${sections[i].slice(1)}]`),
       'summarylevelEl': document.querySelector(`.level[data-id=${sections[i].slice(1)}]`),
+      // Create and Object to store info
       'selectedValues': {},
+      // Store total score
       'total': 0
     };
   }
-
+  // Loop twice through each object form
   for (let i = 0; i < sectionEls.length; i++) {
+    // Loop all inputs for eacy object
     for (let j = 0; j < sectionEls[i].inputs.length; j++) {
+      // Create Key for each input and set a key and number
       sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
+      // Set each input to 0 or 1 based on which form your inside.
       sectionEls[i].inputs[j].setAttribute('data-i', i);
-      // strategicListForm[strategicList[i].name] = 0;
+      // Set a listern event on each input.
       sectionEls[i].inputs[j].addEventListener('click', onClick);
-      // strategicList[i].addEventListener('click', onClickStrategic);
     }
   }
 
-  function updateScores (total, scoreElm, scoreRange, summaryScore, summaryLevel) {
+  function updateScores (total, scoreElm, scoreLevelElm, summaryScoreElm, summaryLevel) {
     if (total !== 0) {
       scoreElm.innerHTML = total;
     } else {
       scoreElm.innerHTML = '';
     }
     if (total === 0) {
-      scoreRange.innerHTML = '';
-      summaryScore.innerHTML = '';
+      scoreLevelElm.innerHTML = '';
+      summaryScoreElm.innerHTML = '';
     } else if (total > 0 && total <= 5) {
-      scoreRange.innerHTML = 'Low';
-      summaryScore.innerHTML = 'Low';
+      scoreLevelElm.innerHTML = 'Low';
+      summaryScoreElm.innerHTML = 'Low';
     } else if (total >= 6 && total <= 9) {
-      scoreRange.innerHTML = 'Medium';
-      summaryScore.innerHTML = 'Medium';
+      scoreLevelElm.innerHTML = 'Medium';
+      summaryScoreElm.innerHTML = 'Medium';
     } else {
-      scoreRange.innerHTML = 'High';
-      summaryScore.innerHTML = 'High';
+      scoreLevelElm.innerHTML = 'High';
+      summaryScoreElm.innerHTML = 'High';
     }
     summaryLevel.innerHTML = total;
   }
@@ -92,6 +100,7 @@ module.exports = function (sections, totals) {
   function onClick (e) {
     const index = e.target.getAttribute('data-i');
     if (e.target.checked) {
+      console.log(sectionEls[index]);
       sectionEls[index].selectedValues[e.target.name] = parseInt(e.target.value);
       updateSummary(e.target.name, e.target.value);
       // strategicListForm[e.target.name] = parseInt(e.target.value);
@@ -99,7 +108,6 @@ module.exports = function (sections, totals) {
       sectionEls[index].selectedValues[e.target.name] = 0;
       // strategicListForm[e.target.name] = 0;
     }
-
     sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
     // strategicTotal = getTotal(strategicListForm);
     updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
