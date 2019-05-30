@@ -22,7 +22,7 @@ module.exports = function (sections, totals) {
   }
   // Loop twice through each object form
   for (let i = 0; i < sectionEls.length; i++) {
-    // Loop all inputs for eacy object
+    // Loop all inputs for each object
     for (let j = 0; j < sectionEls[i].inputs.length; j++) {
       // Create Key for each input and set a key and number
       sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
