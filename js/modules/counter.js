@@ -43,11 +43,11 @@ module.exports = function (sections, totals) {
     if (total === 0) {
       scoreLevelElm.innerHTML = '';
       summaryScoreElm.innerHTML = '';
-      // if total is great then 0 but less then 5
+      // if total is great then 0 but less then or equal 5
     } else if (total > 0 && total <= 5) {
       scoreLevelElm.innerHTML = 'Low';
       summaryScoreElm.innerHTML = 'Low';
-      // if total is great then or equal to 6 but less then 9
+      // if total is great then or equal to 6 but less then equal to 9
     } else if (total >= 6 && total <= 9) {
       scoreLevelElm.innerHTML = 'Medium';
       summaryScoreElm.innerHTML = 'Medium';
@@ -120,7 +120,7 @@ module.exports = function (sections, totals) {
     }
     // Set total based on which index your in to the object
     sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
-    // Let innerHMTL based on score giving in the object.
+    // Let update innerHMTL based on score giving in the object.
     updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
     updateTier();
   }
