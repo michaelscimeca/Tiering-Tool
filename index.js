@@ -1,5 +1,9 @@
 const Express = require('express');
+const Prismic = require('prismic-javascript');
+const PrismicDOM = require('prismic-dom');
 const hbs = require('hbs');
+const PrismicConfig = require('./prismic-configuration');
+
 const app = new Express();
 
 app.set('view engine', 'hbs');
@@ -14,14 +18,43 @@ app.use(function (req, res, next) {
   return next();
 });
 
-app.get('/', (req, res) => {
-  res.render('home', {
-    title: 'Digital Tiering Tool',
-    description: 'Internal tool for Red Square.',
-    url: `${(req.get('x-forwarded-port') === '443' || req.get('x-forwarded-port') === 443) ? 'https' : 'http'}://${req.get('host')}${req.originalUrl}`,
-    'og_img': '#',
-    'site_name': 'Digital Tiering Tool',
-    'author': 'Red Square'
+app.get('/', (req, res, next) => {
+  req.prismic.api.getSingle('home_page').then((document) => {
+    if (document) {
+      res.render('home', {
+        document,
+        title: 'Digital Tiering Tool',
+        description: 'Internal tool for Red Square.',
+        url: `${(req.get('x-forwarded-port') === '443' || req.get('x-forwarded-port') === 443) ? 'https' : 'http'}://${req.get('host')}${req.originalUrl}`,
+        'og_img': '#',
+        'site_name': 'Digital Tiering Tool',
+        'author': 'Red Square'
+      });
+    } else {
+      var err = new Error();
+      err.status = 404;
+      next(err);
+    }
+  });
+});
+
+app.get('/:uid', (req, res, next) => {
+  req.prismic.api.getByUID('page', req.params.uid).then((document) => {
+    if (document) {
+      res.render('department', {
+        document,
+        title: 'Department',
+        description: 'Description',
+        url: `${req.protocol}://${req.get('host')}${req.originalUrl}`,
+        'og_img': '#',
+        'site_name': 'Hello Starter',
+        'author': 'Red Square'
+      });
+    } else {
+      var err = new Error();
+      err.status = 404;
+      next(err);
+    }
   });
 });
 
@@ -45,5 +78,7 @@ app.use(function (err, req, res, next) {
     'author': 'Red Square'
   });
 });
+
+hbs.registerHelper('PrismicText', context => PrismicDOM.RichText.asHtml(context, PrismicConfig.linkResolver));
 
 app.listen(process.env.PORT || 3000);
