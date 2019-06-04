@@ -11,6 +11,19 @@ app.set('views', `${__dirname}/views`);
 
 app.use(Express.static(`${__dirname}/static`));
 
+// Middleware to inject prismic context
+app.use((req, res, next) => {
+  Prismic.api(PrismicConfig.apiEndpoint, {
+    accessToken: PrismicConfig.accessToken,
+    req
+  }).then((api) => {
+    req.prismic = { api };
+    next();
+  }).catch((error) => {
+    next(error.message);
+  });
+});
+
 app.use(function (req, res, next) {
   if (req.get('x-forwarded-port') === '80' || req.get('x-forwarded-port') === 80) {
     return res.redirect(301, `https://${req.get('host')}${req.originalUrl}`);
@@ -79,6 +92,7 @@ app.use(function (err, req, res, next) {
   });
 });
 
-hbs.registerHelper('PrismicText', context => PrismicDOM.RichText.asHtml(context, PrismicConfig.linkResolver));
+hbs.registerHelper('PrismicRichText', context => PrismicDOM.RichText.asHtml(context, PrismicConfig.linkResolver));
+hbs.registerHelper('PrismicPlainText', context => PrismicDOM.RichText.asText(context));
 
 app.listen(process.env.PORT || 3000);

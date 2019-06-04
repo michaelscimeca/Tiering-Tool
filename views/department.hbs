@@ -1,12 +1,73 @@
 <div class="row">
   <div class="large-12 column">
-    <h2 class="line">Criteria Strategic Importance</h2>
+    <h2 class="line">{{{PrismicPlainText document.data.section_title}}}</h2>
   </div>
 </div>
 
 <form id="strategic" class="" action="" method="">
   <div id="pricing">
     <ul>
+      {{#each document.data.section}}
+      <li>
+        <div class="row border">
+          <div class="large-12 column">
+            <div class="cont">
+              <h3>{{PrismicPlainText category_title_one}}</h3>
+              <p>{{PrismicPlainText category_description_one}}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="row border">
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="3" name="branding" id="1">
+                  <label for="1"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">H</div>
+                <div class="description">{{PrismicPlainText h_field_title}}</div>
+                <div class="details">{{PrismicPlainText h_field_description}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="2" name="branding" id="2">
+                  <label for="2"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">M</div>
+                <div class="description">{{PrismicPlainText m_field_title}}</div>
+                <div class="details">{{PrismicPlainText m_field_description}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="1" name="branding" id="3">
+                  <label for="3"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">L</div>
+                <div class="description">{{PrismicPlainText l_field_title}}</div>
+                <div class="details">{{PrismicPlainText l_field_description}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
       <li>
         <div class="row border">
           <div class="large-12 column">
