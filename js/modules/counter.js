@@ -94,16 +94,12 @@ module.exports = function (sections, totals) {
     if (e.target.checked) {
       sectionEls[index].selectedValues[e.target.name] = parseInt(e.target.value);
       updateSummary(e.target.name, e.target.value);
-      // strategicListForm[e.target.name] = parseInt(e.target.value);
     } else {
       sectionEls[index].selectedValues[e.target.name] = 0;
-      // strategicListForm[e.target.name] = 0;
     }
-
     sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
-    // strategicTotal = getTotal(strategicListForm);
+    console.log(sectionEls[index].total);
     updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
-    // updateScores(strategicTotal, strategicScore, strategicRange, overallRangeScore, overallStrategicScore);
     updateTier();
   }
 };

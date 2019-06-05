@@ -94,5 +94,10 @@ app.use(function (err, req, res, next) {
 
 hbs.registerHelper('PrismicRichText', context => PrismicDOM.RichText.asHtml(context, PrismicConfig.linkResolver));
 hbs.registerHelper('PrismicPlainText', context => PrismicDOM.RichText.asText(context));
-
+hbs.registerHelper('PrismicSterilizeText', function (context, name) {
+  let text = PrismicDOM.RichText.asText(context);
+  text = text.replace(/\s+/g, '');
+  text = text.replace(/\//g, '');
+  return text.toLowerCase();
+});
 app.listen(process.env.PORT || 3000);
