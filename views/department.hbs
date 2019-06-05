@@ -3,7 +3,7 @@
     <h2 class="line">{{{PrismicPlainText document.data.section_title}}}</h2>
   </div>
 </div>
-<form id="strategic" class="" action="" method="">
+<form id="strategic">
   <div id="pricing">
     <ul>
       {{#each document.data.section}}
@@ -83,7 +83,7 @@
   </div>
 </div>
 
-<form id="complexity" class="" action="" method="">
+<form id="complexity">
   <div id="pricing">
     <ul>
       {{#each document.data.section1}}
@@ -165,17 +165,15 @@
         <input type="text" placeholder="Project Name">
       </div>
       <h2 class="line">{{{PrismicPlainText document.data.section_title}}}</h2>
-
       {{#each document.data.section}}
-      <h3>{{PrismicPlainText category_title_one}} - <span data-name="{{PrismicSterilizeText category_title_one}}"></span></h3>
+        <h3>{{PrismicPlainText category_title_one}} - <span data-name="{{PrismicSterilizeText category_title_one}}"></span></h3>
       {{/each}}
-        <div id="overall-strategic-score">Strategic Score = <span data-id="strategic" class="score">0</span></div>
-        <div id="overall-strategic-range">Strategic Range = <span data-id="strategic" class="level">Low</span></div>
+      <div id="overall-strategic-score">Strategic Score = <span data-id="strategic" class="score">0</span></div>
+      <div id="overall-strategic-range">Strategic Range = <span data-id="strategic" class="level">Low</span></div>
       <h2 class="line">{{{PrismicPlainText document.data.section_title1}}}</h2>
       {{#each document.data.section1}}
-      <h3>{{PrismicPlainText category_title_two}} - <span data-name="{{PrismicSterilizeText category_title_two}}"></span></h3>
+        <h3>{{PrismicPlainText category_title_two}} - <span data-name="{{PrismicSterilizeText category_title_two}}"></span></h3>
       {{/each}}
-
 
       <div id="overall-Complexity-score">Complexity Score = <span data-id="complexity" class="score">0</span></div>
       <div id="overall-Complexity-range">Complexity Range = <span data-id="complexity" class="level">Low</span></div>

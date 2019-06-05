@@ -1,6 +1,8 @@
 'use strict';
 module.exports = function (sections, totals) {
   const tier = document.querySelector(`${totals} #overall-tier span`);
+  const mainTotal = document.querySelector(`#total span`);
+
   let sectionEls = [];
 
   for (let i = 0; i < sections.length; i++) {
@@ -19,15 +21,14 @@ module.exports = function (sections, totals) {
     for (let j = 0; j < sectionEls[i].inputs.length; j++) {
       sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
       sectionEls[i].inputs[j].setAttribute('data-i', i);
-      // strategicListForm[strategicList[i].name] = 0;
       sectionEls[i].inputs[j].addEventListener('click', onClick);
-      // strategicList[i].addEventListener('click', onClickStrategic);
     }
   }
 
-  function updateScores (total, scoreElm, scoreRange, summaryScore, summaryLevel) {
+  function updateScores (overalTotal, total, scoreElm, scoreRange, summaryScore, summaryLevel) {
     if (total !== 0) {
       scoreElm.innerHTML = total;
+      overalTotal.innerHTML = parseInt(total);
     } else {
       scoreElm.innerHTML = '';
     }
@@ -97,9 +98,10 @@ module.exports = function (sections, totals) {
     } else {
       sectionEls[index].selectedValues[e.target.name] = 0;
     }
+
     sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
     console.log(sectionEls[index].total);
-    updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
+    updateScores(mainTotal, sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
     updateTier();
   }
 };
