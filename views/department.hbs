@@ -157,28 +157,34 @@
     </div>
   </div>
 </form>
-
-<div class="row">
-  <div class="large-12 column">
-    <div id="overall">
+<div id="overall">
+  <div class="row">
+    <div class="large-12 column">
       <div id="overal-input">
         <input type="text" placeholder="Project Name">
       </div>
-      <h2 class="line">{{{PrismicPlainText document.data.section_title}}}</h2>
-      {{#each document.data.section}}
-        <h3>{{PrismicPlainText category_title_one}} - <span data-name="{{PrismicSterilizeText category_title_one}}"></span></h3>
-      {{/each}}
-      <div id="overall-strategic-score">Strategic Score = <span data-id="strategic" class="score">0</span></div>
-      <div id="overall-strategic-range">Strategic Range = <span data-id="strategic" class="level">Low</span></div>
-      <h2 class="line">{{{PrismicPlainText document.data.section_title1}}}</h2>
-      {{#each document.data.section1}}
-        <h3>{{PrismicPlainText category_title_two}} - <span data-name="{{PrismicSterilizeText category_title_two}}"></span></h3>
-      {{/each}}
+      <div id="overall-tier">TIER = <span>0</span></div>
 
-      <div id="overall-Complexity-score">Complexity Score = <span data-id="complexity" class="score">0</span></div>
-      <div id="overall-Complexity-range">Complexity Range = <span data-id="complexity" class="level">Low</span></div>
-      <br/>
-      <div id="overall-tier">Actual Tier = <span>0</span></div>
     </div>
   </div>
+  <div class="row">
+    <div class="large-6 column">
+      <h2 class="line">{{{PrismicPlainText document.data.section_title}}}</h2>
+      <div id="overall-strategic-range"><span data-id="strategic" class="level">Low</span>&nbsp/&nbsp</div>
+      <div id="overall-strategic-score"><span data-id="strategic" class="score">0</span></div>
+      {{#each document.data.section}}
+      <h3>{{PrismicPlainText category_title_one}} - <span data-name="{{PrismicSterilizeText category_title_one}}"></span></h3>
+      {{/each}}
+    </div>
+
+    <div class="large-6 column">
+      <h2 class="line">{{{PrismicPlainText document.data.section_title1}}}</h2>
+      <div id="overall-Complexity-range"> <span data-id="complexity" class="level">Low</span>&nbsp/&nbsp</div>
+      <div id="overall-Complexity-score"><span data-id="complexity" class="score">0</span></div>
+      {{#each document.data.section1}}
+      <h3>{{PrismicPlainText category_title_two}} - <span data-name="{{PrismicSterilizeText category_title_two}}"></span></h3>
+      {{/each}}
+    </div>
+  </div>
+
 </div>

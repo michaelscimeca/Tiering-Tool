@@ -133,6 +133,11 @@ form {
   }
 }
 
+#overall-strategic-range,
+#overall-Complexity-range {
+  float: left;
+}
+
 #total {
   position: fixed;
   top: 0;
@@ -156,7 +161,6 @@ form {
   font-size: em(22);
   font-weight: bold;
   opacity: 1;
-  text-align: right;
   @include circularBook;
 
   @include breakpoint(medium) {
@@ -235,7 +239,7 @@ form {
     padding-bottom: 0px;
     padding-left: 0;
     @include breakpoint(medium) {
-      min-width: 300px;
+      // min-width: 300px;
     }
   }
 

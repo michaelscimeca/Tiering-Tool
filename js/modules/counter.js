@@ -17,7 +17,6 @@ module.exports = function (sections, totals) {
     };
   }
 
-
   for (let i = 0; i < sectionEls.length; i++) {
     for (let j = 0; j < sectionEls[i].inputs.length; j++) {
       sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
