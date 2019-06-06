@@ -133,6 +133,12 @@ form {
   }
 }
 
+#total {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
 #strategic-totalScore,
 #strategic-range,
 #complexity-range,
@@ -151,6 +157,8 @@ form {
   font-weight: bold;
   opacity: 1;
   text-align: right;
+  @include circularBook;
+
   @include breakpoint(medium) {
     font-size: em(26);
   }
@@ -173,6 +181,43 @@ form {
   #overal-input {
     // text-align: right;
     margin-bottom: 20px;
+  }
+
+  h2.line {
+    position: relative;
+    margin-top: 30px;
+    line-height: 32px;
+    margin-bottom: 20px;
+    font-size: 1.625em;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: -9px;
+      left: 0;
+      background-color: $red;
+      height: 3px;
+      width: 70px;
+
+      @include breakpoint(medium) {
+        bottom: -6px;
+      }
+
+      @include breakpoint(large) {
+        bottom: -7px;
+      }
+    }
+  }
+
+  h3 {
+    font-size: em(20);
+    line-height: 30px;
+    margin: 0;
+    @include circularBook;
+    @include breakpoint(medium) {
+      font-size: em(26);
+      line-height: 31px;
+
+    }
   }
   input {
     position: relative;

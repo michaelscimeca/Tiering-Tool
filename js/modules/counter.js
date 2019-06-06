@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function (sections, totals) {
   const tier = document.querySelector(`${totals} #overall-tier span`);
-  const mainTotal = document.querySelector(`#total span`);
+  let mainTotal = document.querySelector(`#total span`);
 
   let sectionEls = [];
 
@@ -17,6 +17,7 @@ module.exports = function (sections, totals) {
     };
   }
 
+
   for (let i = 0; i < sectionEls.length; i++) {
     for (let j = 0; j < sectionEls[i].inputs.length; j++) {
       sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
@@ -25,10 +26,9 @@ module.exports = function (sections, totals) {
     }
   }
 
-  function updateScores (overalTotal, total, scoreElm, scoreRange, summaryScore, summaryLevel) {
+  function updateScores (total, scoreElm, scoreRange, summaryScore, summaryLevel) {
     if (total !== 0) {
       scoreElm.innerHTML = total;
-      overalTotal.innerHTML = parseInt(total);
     } else {
       scoreElm.innerHTML = '';
     }
@@ -98,10 +98,13 @@ module.exports = function (sections, totals) {
     } else {
       sectionEls[index].selectedValues[e.target.name] = 0;
     }
-
     sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
-    console.log(sectionEls[index].total);
-    updateScores(mainTotal, sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
+    updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
     updateTier();
+    for (var i = 0; i < sectionEls.length; i++) {
+      console.log(sectionEls[i].total);
+      mainTotal += sectionEls[i].total;
+    }
+    console.log(mainTotal);
   }
 };
