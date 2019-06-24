@@ -52,8 +52,9 @@
   },
   "dependencies": {
     "express": "^4.17.0",
-    "prismic-javascript": "^2.0.3",
     "foundation-sites": "^6.5.3",
-    "hbs": "^4.0.4"
+    "hbs": "^4.0.4",
+    "prismic-dom": "^2.1.0",
+    "prismic-javascript": "^2.0.3"
   }
 }
