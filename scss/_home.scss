@@ -192,7 +192,15 @@ form {
     margin-top: 30px;
     line-height: 32px;
     margin-bottom: 20px;
-    font-size: 1.625em;
+    font-size: 17px;
+
+    @include breakpoint(medium) {
+      font-size: 26px;
+    }
+
+    @include breakpoint(large) {
+      font-size: 27px;
+    }
     &:after {
       content: '';
       position: absolute;
