@@ -1,6 +1,8 @@
 'use strict';
 module.exports = function (sections, totals) {
   const tier = document.querySelector(`${totals} #overall-tier span`);
+  let mainTotal = document.querySelector(`#total span`);
+
   let sectionEls = [];
 
   for (let i = 0; i < sections.length; i++) {
@@ -19,9 +21,7 @@ module.exports = function (sections, totals) {
     for (let j = 0; j < sectionEls[i].inputs.length; j++) {
       sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
       sectionEls[i].inputs[j].setAttribute('data-i', i);
-      // strategicListForm[strategicList[i].name] = 0;
       sectionEls[i].inputs[j].addEventListener('click', onClick);
-      // strategicList[i].addEventListener('click', onClickStrategic);
     }
   }
 
@@ -94,16 +94,16 @@ module.exports = function (sections, totals) {
     if (e.target.checked) {
       sectionEls[index].selectedValues[e.target.name] = parseInt(e.target.value);
       updateSummary(e.target.name, e.target.value);
-      // strategicListForm[e.target.name] = parseInt(e.target.value);
     } else {
       sectionEls[index].selectedValues[e.target.name] = 0;
-      // strategicListForm[e.target.name] = 0;
     }
-
     sectionEls[index].total = getTotal(sectionEls[index].selectedValues);
-    // strategicTotal = getTotal(strategicListForm);
     updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
-    // updateScores(strategicTotal, strategicScore, strategicRange, overallRangeScore, overallStrategicScore);
     updateTier();
+    for (var i = 0; i < sectionEls.length; i++) {
+      console.log(sectionEls[i].total);
+      mainTotal += sectionEls[i].total;
+    }
+    console.log(mainTotal);
   }
 };

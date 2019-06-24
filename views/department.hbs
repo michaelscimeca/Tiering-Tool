@@ -1,0 +1,190 @@
+<div class="row">
+  <div class="large-12 column">
+    <h2 class="line">{{{PrismicPlainText document.data.section_title}}}</h2>
+  </div>
+</div>
+<form id="strategic">
+  <div id="pricing">
+    <ul>
+      {{#each document.data.section}}
+      <li>
+        <div class="row border">
+          <div class="large-12 column">
+            <div class="cont">
+              <h3>{{PrismicPlainText category_title_one}}</h3>
+              <p>{{PrismicPlainText category_description_one}}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="row border">
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="3" name="{{PrismicSterilizeText category_title_one}}" id="{{PrismicSterilizeText category_title_one}}1">
+                  <label for="{{PrismicSterilizeText category_title_one}}1"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">H</div>
+                <div class="description">{{PrismicPlainText h_field_title}}</div>
+                <div class="details">{{PrismicPlainText h_field_description}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="2" name="{{PrismicSterilizeText category_title_one}}" id="{{PrismicSterilizeText category_title_one}}2">
+                  <label for="{{PrismicSterilizeText category_title_one}}2"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">M</div>
+                <div class="description">{{PrismicPlainText m_field_title}}</div>
+                <div class="details">{{PrismicPlainText m_field_description}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="1" name="{{PrismicSterilizeText category_title_one}}" id="{{PrismicSterilizeText category_title_one}}3">
+                  <label for="{{PrismicSterilizeText category_title_one}}3"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">L</div>
+                <div class="description">{{PrismicPlainText l_field_title}}</div>
+                <div class="details">{{PrismicPlainText l_field_description}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="row">
+      <div class="large-12 column">
+        <div id="strategic-totalScore">Strategic Importance Score = <span class="score">0</span></div>
+        <div id="strategic-range">Strategic Importance Range = <span class="level">Low</span></div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div class="row">
+  <div class="large-12 column">
+    <h2 class="line">{{{PrismicPlainText document.data.section_title1}}}</h2>
+  </div>
+</div>
+
+<form id="complexity">
+  <div id="pricing">
+    <ul>
+      {{#each document.data.section1}}
+      <li>
+        <div class="row border">
+          <div class="large-12 column">
+            <div class="cont">
+              <h3>{{PrismicPlainText category_title_two}}</h3>
+              <p>{{PrismicPlainText category_description_two}}</p>
+            </div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="row border">
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="3" name="{{PrismicSterilizeText category_title_two}}" id="{{PrismicPlainText category_title_two}}1">
+                  <label for="{{PrismicPlainText category_title_two}}1"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">H</div>
+                <div class="description">{{PrismicPlainText h_field_title_two}}</div>
+                <div class="details">{{PrismicPlainText h_field_description_two}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="2" name="{{PrismicSterilizeText category_title_two}}" id="{{PrismicPlainText category_title_two}}2">
+                  <label for="{{PrismicPlainText category_title_two}}2"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">M</div>
+                <div class="description">{{PrismicPlainText m_field_title_two}}</div>
+                <div class="details">{{PrismicPlainText m_field_description_two}}</div>
+              </div>
+            </div>
+          </div>
+          <div class="small-12 large-4 column">
+            <div class="row-cont">
+              <div class="check-box-cont">
+                <div class="checkbox">
+                  <input type="radio" value="1" name="{{PrismicSterilizeText category_title_two}}" id="{{PrismicPlainText category_title_two}}3">
+                  <label for="{{PrismicPlainText category_title_two}}3"></label>
+                </div>
+              </div>
+              <div class="title-cont">
+                <div class="title">L</div>
+                <div class="description">{{PrismicPlainText l_field_title_two}}</div>
+                <div class="details">{{PrismicPlainText l_field_description_two}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+    <div class="row">
+      <div class="large-12 column">
+        <div id="complexity-totalScore">Complexity Score = <span class="score">0</span></div>
+        <div id="complexity-range">Complexity Range = <span class="level">Low</span></div>
+        <div id="total">Total = <span>0</span></div>
+      </div>
+    </div>
+  </div>
+</form>
+<div id="overall">
+  <div class="row">
+    <div class="large-12 column">
+      <div id="overal-input">
+        <input type="text" placeholder="Project Name">
+      </div>
+      <div id="overall-tier">TIER = <span>0</span></div>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 column">
+      <h2 class="line">{{{PrismicPlainText document.data.section_title}}}</h2>
+      <div id="overall-strategic-range"><span data-id="strategic" class="level">Low</span>&nbsp/&nbsp</div>
+      <div id="overall-strategic-score"><span data-id="strategic" class="score">0</span></div>
+      {{#each document.data.section}}
+      <h3>{{PrismicPlainText category_title_one}} - <span data-name="{{PrismicSterilizeText category_title_one}}"></span></h3>
+      {{/each}}
+    </div>
+
+    <div class="large-6 column">
+      <h2 class="line">{{{PrismicPlainText document.data.section_title1}}}</h2>
+      <div id="overall-Complexity-range"> <span data-id="complexity" class="level">Low</span>&nbsp/&nbsp</div>
+      <div id="overall-Complexity-score"><span data-id="complexity" class="score">0</span></div>
+      {{#each document.data.section1}}
+      <h3>{{PrismicPlainText category_title_two}} - <span data-name="{{PrismicSterilizeText category_title_two}}"></span></h3>
+      {{/each}}
+    </div>
+  </div>
+
+</div>
