@@ -60,8 +60,8 @@ app.get('/:uid', (req, res, next) => {
         description: 'Description',
         url: `${req.protocol}://${req.get('host')}${req.originalUrl}`,
         'og_img': '#',
-        'site_name': 'Hello Starter',
-        'author': 'Red Square'
+        'site_name': 'Digital Tiering Tool',
+        'author': 'Internal tool for Red Square'
       });
     } else {
       var err = new Error();
