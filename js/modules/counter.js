@@ -17,6 +17,8 @@ module.exports = function (sections, totals) {
     };
   }
 
+  console.log(sectionEls);
+
   for (let i = 0; i < sectionEls.length; i++) {
     for (let j = 0; j < sectionEls[i].inputs.length; j++) {
       sectionEls[i].selectedValues[sectionEls[i].inputs[j].name] = 0;
@@ -101,9 +103,8 @@ module.exports = function (sections, totals) {
     updateScores(sectionEls[index].total, sectionEls[index].scoreEl, sectionEls[index].levelEl, sectionEls[index].summaryScoreEl, sectionEls[index].summarylevelEl);
     updateTier();
     for (var i = 0; i < sectionEls.length; i++) {
-      console.log(sectionEls[i].total);
+      // console.log(sectionEls[i].total);
       mainTotal += sectionEls[i].total;
     }
-    console.log(mainTotal);
   }
 };
