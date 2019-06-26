@@ -56,12 +56,12 @@ app.get('/:uid', (req, res, next) => {
     if (document) {
       res.render('department', {
         document,
-        title: 'Department',
-        description: 'Description',
+        title: 'Digital Tiering Tool',
+        description: 'Internal tool for Red Square.',
         url: `${req.protocol}://${req.get('host')}${req.originalUrl}`,
         'og_img': '#',
         'site_name': 'Digital Tiering Tool',
-        'author': 'Internal tool for Red Square'
+        'author': 'Red Square'
       });
     } else {
       var err = new Error();
